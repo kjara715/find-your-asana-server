@@ -1,5 +1,7 @@
 let DB_URI;
 
+require("dotenv").config();
+
 if(process.env.NODE_ENV === "test") {
     DB_URI = "postgresql:///yogadb_test"
 } else {

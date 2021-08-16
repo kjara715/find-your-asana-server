@@ -1,11 +1,20 @@
 
 const path = require('path');
 const express = require('express');
+const {PORT} = require('./config')
 
 
 
 
 const app = express();
+
+// app.get('/', function(request, response) {
+//     var result = 'App is running'
+//     response.send(result);
+// }).listen(app.get('PORT'), function() {
+//     console.log('App is running, server is listening on port ', app.get('port'));
+// });
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
@@ -29,7 +38,12 @@ app.use(express.json());
 
 // app.use(express.json({limit: '50mb'}))
 // app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}))
-app.use(authenticateJWT)
+app.use(authenticateJWT);
+
+app.get('/', function(request, response) {
+    var result = 'App is running'
+    response.send(result);
+})
 
 
 app.use('/users', userRoutes);

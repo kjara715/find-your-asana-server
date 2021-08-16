@@ -1,12 +1,16 @@
 const app= require("./app");
+const {PORT} = require("./config")
+
 
 app.get('/', function(request, response) {
     const result = 'App is running'
     response.send(result);
-})
+});
 
-app.listen(3001, function () {
-    console.log('App on port 3001')
+
+
+app.listen(PORT, function () {
+    console.log(`App on port ${PORT}`)
 })
 
 //to start server run nodemon server.js
